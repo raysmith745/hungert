@@ -1,4 +1,4 @@
-# Hungert
+# hungert
 
 This is going to be an app that makes suggestions for meals, taking the stress out of weekly meal planning and shopping list creation.
 
