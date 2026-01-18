@@ -11,9 +11,20 @@ export default function NewMeal() {
     const ingredientsInput = formData.get("ingredients") as string;
     const category = formData.get("category") as string;
 
+    // Validation
+    if (!name.trim()) {
+      throw new Error("Meal name is required");
+    }
+    if (!ingredientsInput.trim()) {
+      throw new Error("At least one ingredient is required");
+    }
+    if (!category) {
+      throw new Error("Please select a category");
+    }
+
     await prisma.meal.create({
       data: {
-        name,
+        name: name.trim(),
         category,
         ingredients: {
           connectOrCreate: ingredientsInput
@@ -24,7 +35,8 @@ export default function NewMeal() {
                 where: { name: trimmedName },
                 create: { name: trimmedName },
               };
-            }),
+            })
+            .filter((item) => item.where.name),
         },
       },
     });
@@ -47,6 +59,7 @@ export default function NewMeal() {
             name="name"
             placeholder="Enter your meal name"
             className="w-full px-4 py-2 border rounded-lg"
+            required
           />
         </div>
         <div>
@@ -57,6 +70,7 @@ export default function NewMeal() {
             id="category"
             name="category"
             className="w-full px-4 py-2 border rounded-lg"
+            required
           >
             <option value="">Select a category</option>
             <option value="Weekday">Weekday</option>
@@ -74,6 +88,7 @@ export default function NewMeal() {
             placeholder="Write your meal ingredients here, separated by commas..."
             rows={6}
             className="w-full px-4 py-2 border rounded-lg"
+            required
           />
         </div>
         <button
