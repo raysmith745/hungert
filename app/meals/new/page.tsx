@@ -93,7 +93,7 @@ export default function NewMeal() {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600"
+          className="w-full bg-black border-2 border-white text-white py-3 rounded-lg hover:bg-gray-500"
         >
           Create Meal
         </button>

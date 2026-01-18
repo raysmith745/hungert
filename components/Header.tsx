@@ -1,4 +1,4 @@
-import Link from "next/link";
+  import Link from "next/link";
 
 export default function Header() {
   return (
@@ -12,7 +12,10 @@ export default function Header() {
             <Link href="/" className="hover:text-gray-500">Home</Link>
           </li>
           <li className="flex items-center border-l border-gray-500 pl-4">
-            <Link href="/meals/new" className="hover:text-gray-500">Add a Meal</Link>
+            <Link href="/meals/generate" className="hover:text-gray-500">Generate Meal Plan</Link>
+          </li>
+          <li className="flex items-center border-l border-gray-500 pl-4">
+            <Link href="/meals/new" className="hover:text-gray-500">Add New Meal</Link>
           </li>
         </ul>
       </nav>
